@@ -15,3 +15,12 @@ build/
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Test and tool output
+coverage/
+**/coverage/
+.cache/
+*.tsbuildinfo
+
+# Local capstone data
+**/.data/

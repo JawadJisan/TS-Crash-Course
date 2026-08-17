@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A typed TypeScript expense tracker" />
+    <title>Ledger - TypeScript Expense Tracker</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">TypeScript capstone</p>
+        <h1>Ledger</h1>
+      </div>
+      <div class="header-actions">
+        <button id="export-button" type="button" class="secondary">Export JSON</button>
+        <label class="button secondary" for="import-input">Import JSON</label>
+        <input id="import-input" type="file" accept="application/json" hidden />
+      </div>
+    </header>
+
+    <main>
+      <section class="summary" aria-label="Account summary">
+        <div><span>Balance</span><strong id="balance">৳0</strong></div>
+        <div><span>Income</span><strong id="income">৳0</strong></div>
+        <div><span>Expenses</span><strong id="expenses">৳0</strong></div>
+      </section>
+
+      <section class="workspace">
+        <form id="transaction-form" class="entry-panel">
+          <h2>Add transaction</h2>
+          <label
+            >Description<input
+              id="description"
+              name="description"
+              maxlength="80"
+              required
+          /></label>
+          <div class="field-row">
+            <label
+              >Amount<input
+                id="amount"
+                name="amount"
+                type="number"
+                min="0.01"
+                step="0.01"
+                required
+            /></label>
+            <label>Date<input id="date" name="date" type="date" required /></label>
+          </div>
+          <div class="field-row">
+            <label
+              >Kind<select id="kind" name="kind">
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+              </select></label
+            >
+            <label
+              >Category<select id="category" name="category">
+                <option value="food">Food</option>
+                <option value="housing">Housing</option>
+                <option value="transport">Transport</option>
+                <option value="utilities">Utilities</option>
+                <option value="salary">Salary</option>
+                <option value="other">Other</option>
+              </select></label
+            >
+          </div>
+          <p id="form-error" class="error" role="alert"></p>
+          <button type="submit">Add transaction</button>
+        </form>
+
+        <section class="records" aria-labelledby="records-heading">
+          <div class="records-toolbar">
+            <div>
+              <h2 id="records-heading">Transactions</h2>
+              <p id="record-count">0 records</p>
+            </div>
+            <label
+              >Filter<select id="filter">
+                <option value="all">All</option>
+                <option value="income">Income</option>
+                <option value="expense">Expenses</option>
+              </select></label
+            >
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th class="number">Amount</th>
+                  <th><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="transaction-list"></tbody>
+            </table>
+            <p id="empty-state" class="empty">No transactions match this view.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

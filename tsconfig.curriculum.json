@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"]
+  },
+  "include": [
+    "typescript-learning-path/lessons/**/*.ts",
+    "typescript-learning-path/exercises/**/*.ts",
+    "typescript-learning-path/solutions/**/*.ts",
+    "typescript-learning-path/tests/**/*.ts"
+  ]
+}
